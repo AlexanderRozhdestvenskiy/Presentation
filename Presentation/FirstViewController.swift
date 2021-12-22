@@ -9,7 +9,7 @@ import UIKit
 
 class FirstViewController: UIViewController {
     
-    var table = UITableView()
+    var table = UITableView(frame: .zero, style: .insetGrouped)
     var missions: [Mission] = []
     
     override func viewDidLoad() {
@@ -31,7 +31,12 @@ class FirstViewController: UIViewController {
         tableViewSetting()
         table.register(MissionCell.self, forCellReuseIdentifier: "Cell")
         table.rowHeight = 88
-        table.pin(to: view)
+        
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        table.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        table.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        table.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     func loadData() {
