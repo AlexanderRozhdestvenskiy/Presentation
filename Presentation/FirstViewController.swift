@@ -9,8 +9,8 @@ import UIKit
 
 class FirstViewController: UIViewController {
     
-    var table = UITableView(frame: .zero, style: .insetGrouped)
-    var missions: [Mission] = []
+    private lazy var table = UITableView(frame: .zero, style: .insetGrouped)
+    private lazy var missions: [Mission] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +21,12 @@ class FirstViewController: UIViewController {
         loadData()
     }
     
-    func tableViewSetting() {
+    private func tableViewSetting() {
         table.delegate = self
         table.dataSource = self
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         view.addSubview(table)
         tableViewSetting()
         table.register(MissionCell.self, forCellReuseIdentifier: "Cell")
@@ -39,7 +39,7 @@ class FirstViewController: UIViewController {
         table.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    func loadData() {
+    private func loadData() {
         guard let path = Bundle.main.path(forResource: "missions", ofType: "json") else { return }
         let url = URL(fileURLWithPath: path)
         
@@ -49,12 +49,11 @@ class FirstViewController: UIViewController {
         } catch {
             print("Error")
         }
-        
     }
-    
 }
 
 extension FirstViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return missions.count
     }
@@ -71,4 +70,11 @@ extension FirstViewController: UITableViewDataSource {
 
 extension FirstViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let mission = missions[indexPath.row]
+        let missionDetailViewController = DetailViewController()
+        missionDetailViewController.mission = mission
+        
+        self.present(missionDetailViewController, animated: true)
+    }
 }
