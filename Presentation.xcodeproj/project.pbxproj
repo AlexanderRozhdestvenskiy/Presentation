@@ -17,8 +17,9 @@
 		8932E7862773455100083EE3 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8932E7852773455100083EE3 /* Mission.swift */; };
 		8932E7882773482600083EE3 /* astronauts.json in Resources */ = {isa = PBXBuildFile; fileRef = 8932E7872773482600083EE3 /* astronauts.json */; };
 		8932E78A2773483800083EE3 /* missions.json in Resources */ = {isa = PBXBuildFile; fileRef = 8932E7892773483800083EE3 /* missions.json */; };
-		89541F502773795D00DD07B8 /* MissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89541F4F2773795D00DD07B8 /* MissionCell.swift */; };
+		89541F502773795D00DD07B8 /* MissionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89541F4F2773795D00DD07B8 /* MissionTableCell.swift */; };
 		89F024FB2774927200CCB05D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F024FA2774927200CCB05D /* DetailViewController.swift */; };
+		89F024FD2774EA5C00CCB05D /* MissionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F024FC2774EA5C00CCB05D /* MissionCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +35,9 @@
 		8932E7852773455100083EE3 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		8932E7872773482600083EE3 /* astronauts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = astronauts.json; sourceTree = "<group>"; };
 		8932E7892773483800083EE3 /* missions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = missions.json; sourceTree = "<group>"; };
-		89541F4F2773795D00DD07B8 /* MissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCell.swift; sourceTree = "<group>"; };
+		89541F4F2773795D00DD07B8 /* MissionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionTableCell.swift; sourceTree = "<group>"; };
 		89F024FA2774927200CCB05D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		89F024FC2774EA5C00CCB05D /* MissionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +77,7 @@
 				8932E7832773422E00083EE3 /* SecondViewController.swift */,
 				8932E7852773455100083EE3 /* Mission.swift */,
 				89F024FA2774927200CCB05D /* DetailViewController.swift */,
-				89541F4F2773795D00DD07B8 /* MissionCell.swift */,
+				89F024FE2774EC5300CCB05D /* Cell */,
 				8932E7872773482600083EE3 /* astronauts.json */,
 				8932E7892773483800083EE3 /* missions.json */,
 				8932E7762773403600083EE3 /* Assets.xcassets */,
@@ -83,6 +85,15 @@
 				8932E77B2773403600083EE3 /* Info.plist */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		89F024FE2774EC5300CCB05D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89541F4F2773795D00DD07B8 /* MissionTableCell.swift */,
+				89F024FC2774EA5C00CCB05D /* MissionCollectionCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,10 +169,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8932E7722773403300083EE3 /* TabBarViewController.swift in Sources */,
-				89541F502773795D00DD07B8 /* MissionCell.swift in Sources */,
+				89541F502773795D00DD07B8 /* MissionTableCell.swift in Sources */,
 				8932E76E2773403300083EE3 /* AppDelegate.swift in Sources */,
 				8932E7702773403300083EE3 /* SceneDelegate.swift in Sources */,
 				8932E7862773455100083EE3 /* Mission.swift in Sources */,
+				89F024FD2774EA5C00CCB05D /* MissionCollectionCell.swift in Sources */,
 				8932E7842773422E00083EE3 /* SecondViewController.swift in Sources */,
 				8932E7822773421F00083EE3 /* FirstViewController.swift in Sources */,
 				89F024FB2774927200CCB05D /* DetailViewController.swift in Sources */,
@@ -313,7 +325,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,7 +354,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

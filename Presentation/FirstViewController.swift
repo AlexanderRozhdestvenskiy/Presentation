@@ -29,7 +29,7 @@ class FirstViewController: UIViewController {
     private func configureTableView() {
         view.addSubview(table)
         tableViewSetting()
-        table.register(MissionCell.self, forCellReuseIdentifier: "Cell")
+        table.register(MissionTableCell.self, forCellReuseIdentifier: "Cell")
         table.rowHeight = 88
         
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -60,9 +60,10 @@ extension FirstViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MissionCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MissionTableCell
         let mission = missions[indexPath.row]
-        cell.set(mission: mission)
+        cell.missionImage.image = UIImage(named: mission.image)
+        cell.missionTitle.text = mission.displayName
         
         return cell
     }
