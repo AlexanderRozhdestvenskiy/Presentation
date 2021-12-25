@@ -17,9 +17,9 @@ class TabBarViewController: UITabBarController {
     
     private func setUpControllers() {
         let first = FirstViewController()
-        first.title = "First"
+        first.title = "Table"
         let second = SecondViewController()
-        second.title = "Second"
+        second.title = "Collection"
         
         first.navigationItem.largeTitleDisplayMode = .always
         second.navigationItem.largeTitleDisplayMode = .always
@@ -30,8 +30,8 @@ class TabBarViewController: UITabBarController {
         nav1.navigationBar.prefersLargeTitles = true
         nav2.navigationBar.prefersLargeTitles = true
         
-        nav1.tabBarItem = UITabBarItem(title: "First", image: UIImage(systemName: "house"), tag: 1)
-        nav2.tabBarItem = UITabBarItem(title: "Second", image: UIImage(systemName: "person.circle"), tag: 2)
+        nav1.tabBarItem = UITabBarItem(title: "Table", image: UIImage(systemName: "list.bullet.circle"), tag: 1)
+        nav2.tabBarItem = UITabBarItem(title: "Collection", image: UIImage(systemName: "tablecells"), tag: 2)
         
         setViewControllers([nav1, nav2], animated: true)
     }

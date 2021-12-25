@@ -51,6 +51,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89194AEF2775FAC3005F8F3F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8932E7712773403300083EE3 /* TabBarViewController.swift */,
+				8932E7812773421F00083EE3 /* FirstViewController.swift */,
+				89F024FA2774927200CCB05D /* DetailViewController.swift */,
+				8932E7832773422E00083EE3 /* SecondViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		89194AF02775FADB005F8F3F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8932E7852773455100083EE3 /* Mission.swift */,
+				8932E7892773483800083EE3 /* missions.json */,
+				8932E7872773482600083EE3 /* astronauts.json */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		89194AF12775FAFC005F8F3F /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				8932E76D2773403300083EE3 /* AppDelegate.swift */,
+				8932E76F2773403300083EE3 /* SceneDelegate.swift */,
+				8932E7782773403600083EE3 /* LaunchScreen.storyboard */,
+				8932E7762773403600083EE3 /* Assets.xcassets */,
+				8932E77B2773403600083EE3 /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		8932E7612773403300083EE3 = {
 			isa = PBXGroup;
 			children = (
@@ -70,19 +103,10 @@
 		8932E76C2773403300083EE3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				8932E76D2773403300083EE3 /* AppDelegate.swift */,
-				8932E76F2773403300083EE3 /* SceneDelegate.swift */,
-				8932E7712773403300083EE3 /* TabBarViewController.swift */,
-				8932E7812773421F00083EE3 /* FirstViewController.swift */,
-				8932E7832773422E00083EE3 /* SecondViewController.swift */,
-				8932E7852773455100083EE3 /* Mission.swift */,
-				89F024FA2774927200CCB05D /* DetailViewController.swift */,
+				89194AF12775FAFC005F8F3F /* Support */,
+				89194AF02775FADB005F8F3F /* Model */,
+				89194AEF2775FAC3005F8F3F /* Controller */,
 				89F024FE2774EC5300CCB05D /* Cell */,
-				8932E7872773482600083EE3 /* astronauts.json */,
-				8932E7892773483800083EE3 /* missions.json */,
-				8932E7762773403600083EE3 /* Assets.xcassets */,
-				8932E7782773403600083EE3 /* LaunchScreen.storyboard */,
-				8932E77B2773403600083EE3 /* Info.plist */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";

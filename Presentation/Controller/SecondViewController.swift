@@ -49,7 +49,7 @@ class SecondViewController: UIViewController {
 
 extension SecondViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return missions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,6 +60,8 @@ extension SecondViewController: UICollectionViewDataSource {
         cell.missionTitle.text = mission.displayName
         cell.backgroundColor = .systemGray6
         cell.layer.cornerRadius = 24
+        cell.layer.borderWidth = 2
+        cell.layer.borderColor = CGColor.init(red: 0, green: 0, blue: 0, alpha: 1)
         return cell
     }
 }
@@ -70,6 +72,6 @@ extension SecondViewController: UICollectionViewDelegate {
 
 extension SecondViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 175, height: 222)
+        return CGSize(width: 175, height: 220)
     }
 }
