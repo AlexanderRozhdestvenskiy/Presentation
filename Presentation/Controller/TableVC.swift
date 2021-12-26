@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class TableVC: UIViewController {
     
     private lazy var table = UITableView(frame: .zero, style: .insetGrouped)
     private lazy var missions: [Mission] = []
@@ -33,10 +33,12 @@ class FirstViewController: UIViewController {
         table.rowHeight = 88
         
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        table.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        table.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        table.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        let safeArea = view.safeAreaLayoutGuide
+        
+        table.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        table.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
+        table.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor).isActive = true
+        table.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
     }
     
     private func loadData() {
@@ -52,7 +54,7 @@ class FirstViewController: UIViewController {
     }
 }
 
-extension FirstViewController: UITableViewDataSource {
+extension TableVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return missions.count
@@ -69,11 +71,11 @@ extension FirstViewController: UITableViewDataSource {
     }
 }
 
-extension FirstViewController: UITableViewDelegate {
+extension TableVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mission = missions[indexPath.row]
-        let missionDetailViewController = DetailViewController()
+        let missionDetailViewController = DetailVC()
         missionDetailViewController.mission = mission
         
         self.present(missionDetailViewController, animated: true)

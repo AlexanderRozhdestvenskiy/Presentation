@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailVC: UIViewController {
     
     var mission: Mission?
 
@@ -15,10 +15,5 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .orange
-
-       
     }
-    
-
-
 }

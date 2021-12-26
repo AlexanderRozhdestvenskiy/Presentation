@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class CollectionVC: UIViewController {
     
     private lazy var collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var missions: [Mission] = []
@@ -28,10 +28,12 @@ class SecondViewController: UIViewController {
         collection.register(MissionCollectionCell.self, forCellWithReuseIdentifier: "ColCell")
         
         collection.translatesAutoresizingMaskIntoConstraints = false
-        collection.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-        collection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
-        collection.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        let safeArea = view.safeAreaLayoutGuide
+        
+        collection.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        collection.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 15).isActive = true
+        collection.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -15).isActive = true
+        collection.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
     }
     
     private func loadData() {
@@ -47,7 +49,7 @@ class SecondViewController: UIViewController {
     }
 }
 
-extension SecondViewController: UICollectionViewDataSource {
+extension CollectionVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return missions.count
     }
@@ -66,11 +68,11 @@ extension SecondViewController: UICollectionViewDataSource {
     }
 }
 
-extension SecondViewController: UICollectionViewDelegate {
+extension CollectionVC: UICollectionViewDelegate {
     
 }
 
-extension SecondViewController: UICollectionViewDelegateFlowLayout {
+extension CollectionVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 175, height: 220)
     }
