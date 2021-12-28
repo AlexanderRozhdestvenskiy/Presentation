@@ -109,7 +109,6 @@
 			children = (
 				89194AF12775FAFC005F8F3F /* Support */,
 				893E40F52777B9EA008ADC8B /* View */,
-				89F024FE2774EC5300CCB05D /* Cell */,
 				89194AF02775FADB005F8F3F /* Model */,
 				89194AEF2775FAC3005F8F3F /* Controller */,
 				8932E77B2773403600083EE3 /* Info.plist */,
@@ -120,6 +119,7 @@
 		893E40F52777B9EA008ADC8B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				89F024FE2774EC5300CCB05D /* Cell */,
 				893E40F62777BA35008ADC8B /* CardView.swift */,
 			);
 			path = View;
