@@ -6,14 +6,25 @@
 //
 
 import UIKit
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    var container: NSPersistentContainer!
+    
+    func createContainer(completion: @escaping (NSPersistentContainer) -> ()) {
+        let conteiner = NSPersistentContainer(name: "Model")
+        conteiner.loadPersistentStores(completionHandler: { _, error in
+            guard error == nil else { fatalError("Failed to load store") }
+            DispatchQueue.main.async {
+                completion(conteiner)
+            }
+        })
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         return true
     }
 
