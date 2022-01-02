@@ -47,7 +47,7 @@ class TabBarVC: UITabBarController {
         nav1.tabBarItem = UITabBarItem(title: "Table", image: UIImage(systemName: "list.bullet.circle"), tag: 1)
         nav2.tabBarItem = UITabBarItem(title: "Collection", image: UIImage(systemName: "tablecells"), tag: 2)
         nav3.tabBarItem = UITabBarItem(title: "Image", image: UIImage(systemName: "photo"), tag: 3)
-        nav4.tabBarItem = UITabBarItem(title: "Organization", image: UIImage(systemName: "plus"), tag: 4)
+        nav4.tabBarItem = UITabBarItem(title: "Organization", image: UIImage(systemName: "tray.full"), tag: 4)
         
         setViewControllers([nav1, nav2, nav3, nav4], animated: true)
     }
