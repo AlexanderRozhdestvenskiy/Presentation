@@ -6,25 +6,29 @@
 //
 
 import UIKit
-import CoreData
 
 class OrganizationVC: UIViewController {
     
-    var table = UITableView(frame: .zero, style: .grouped)
-    
-    var context: NSManagedObjectContext! {
-        didSet {
-            table.refreshControl?.endRefreshing()
-        }
-    }
+    lazy var myButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .blue
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+        view.addSubview(myButton)
+        
+        setConstraints()
 
-        table.refreshControl = UIRefreshControl()
-        table.refreshControl?.beginRefreshing()
+    }
+    
+    private func setConstraints() {
+        myButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        myButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 
 }
