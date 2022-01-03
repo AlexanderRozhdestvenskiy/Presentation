@@ -12,7 +12,11 @@ class OrganizationVC: UIViewController {
     lazy var myButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .blue
+        button.setTitle("Button", for: .normal)
+        button.backgroundColor = .systemGreen
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 16
+        button.addTarget(self, action: #selector(printButton), for: .touchUpInside)
         return button
     }()
 
@@ -29,6 +33,11 @@ class OrganizationVC: UIViewController {
     private func setConstraints() {
         myButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         myButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        myButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        myButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
     }
-
+    
+    @objc private func printButton() {
+        print("Tap")
+    }
 }

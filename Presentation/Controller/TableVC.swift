@@ -9,7 +9,7 @@ import UIKit
 
 class TableVC: UIViewController {
     
-    private lazy var table = UITableView(frame: .zero, style: .insetGrouped)
+    private lazy var table = UITableView(frame: .zero, style: .grouped)
     private lazy var missions: [Mission] = []
     
     override func viewDidLoad() {
