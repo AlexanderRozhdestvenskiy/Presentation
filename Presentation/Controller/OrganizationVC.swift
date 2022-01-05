@@ -12,7 +12,7 @@ class OrganizationVC: UIViewController {
     lazy var myButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Button", for: .normal)
+        button.setTitle("Alert", for: .normal)
         button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 16
@@ -38,6 +38,19 @@ class OrganizationVC: UIViewController {
     }
     
     @objc private func printButton() {
-        print("Tap")
+        let alertControl = UIAlertController(title: "Error", message: "Alert presentation\nnew string", preferredStyle: .alert)
+        
+        let actionCansel = UIAlertAction(title: "Cancel", style: .destructive) { action in
+        
+        }
+        
+        let actionOk = UIAlertAction(title: "OK", style: .default) { action in
+            
+        }
+        
+        alertControl.addAction(actionCansel)
+        alertControl.addAction(actionOk)
+        
+        self.present(alertControl, animated: true, completion: nil)
     }
 }
