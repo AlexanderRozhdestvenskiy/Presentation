@@ -9,6 +9,8 @@ import UIKit
 
 class OrganizationVC: UIViewController {
     
+    private let companies = ["Apple", "Google", "Amazon", "Tesla", "Netflix", "Ozon"]
+    
     lazy var myLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -138,20 +140,16 @@ class OrganizationVC: UIViewController {
 
 extension OrganizationVC: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        10
+        return companies.count
     }
-    
-    
 }
 
 extension OrganizationVC: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let result = "Version \(row + 1)"
-        
-        return result
+        return companies[row]
     }
 }
