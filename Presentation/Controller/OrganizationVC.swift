@@ -9,7 +9,7 @@ import UIKit
 
 class OrganizationVC: UIViewController {
     
-    private let companies = ["Apple", "Google", "Amazon", "Tesla", "Netflix", "Ozon"]
+    private let companies = ["Apple", "Google", "Amazon", "Tesla", "Netflix", "Ozon", "Microsoft", "Meta", "Coca-Cola", "BMW"]
     
     lazy var myLabel: UILabel = {
         let label = UILabel(frame: .zero)
@@ -55,6 +55,24 @@ class OrganizationVC: UIViewController {
         picker.layer.cornerRadius = 8
         return picker
     }()
+    
+    lazy var myButtonNav: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Navigation", for: .normal)
+        button.backgroundColor = .systemPink
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 16
+        button.addTarget(self, action: #selector(navigation), for: .touchUpInside)
+        button.titleLabel?.font = .systemFont(ofSize: 24)
+        return button
+    }()
+    
+    lazy var mySlider: UISlider = {
+        let slider = UISlider()
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        return slider
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,11 +86,15 @@ class OrganizationVC: UIViewController {
         view.addSubview(myButton)
         view.addSubview(mySwitch)
         view.addSubview(myPicker)
+        view.addSubview(myButtonNav)
+        view.addSubview(mySlider)
         
         setButtonConstreints()
         setLabelConstraints()
         setSwitchConstreints()
         setPickerConstraints()
+        setButtonNavConstreints()
+        setSliderConstraints()
 
     }
     
@@ -106,8 +128,26 @@ class OrganizationVC: UIViewController {
         
         myPicker.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
         myPicker.topAnchor.constraint(equalTo: mySwitch.bottomAnchor, constant: 16).isActive = true
-        myPicker.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 8).isActive = true
-        myPicker.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -8).isActive = true
+        myPicker.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 64).isActive = true
+        myPicker.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -64).isActive = true
+        myPicker.heightAnchor.constraint(equalToConstant: 128).isActive = true
+    }
+    
+    private func setButtonNavConstreints() {
+        let safeArea = view.safeAreaLayoutGuide
+        
+        myButtonNav.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 100).isActive = true
+        myButtonNav.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -100).isActive = true
+        myButtonNav.topAnchor.constraint(equalTo: myPicker.bottomAnchor, constant: 16).isActive = true
+        myButtonNav.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    private func setSliderConstraints() {
+        let safeArea = view.safeAreaLayoutGuide
+        
+        mySlider.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 8).isActive = true
+        mySlider.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -8).isActive = true
+        mySlider.topAnchor.constraint(equalTo: myButtonNav.bottomAnchor, constant: 16).isActive = true
     }
     
     @objc private func printButton() {
@@ -136,6 +176,13 @@ class OrganizationVC: UIViewController {
     @objc private func printSwitch() {
         view.backgroundColor = mySwitch.isOn ? .systemYellow : .systemBlue
     }
+    
+    @objc private func navigation() {
+        if let navigationController = navigationController {
+            let viewController = DetailVC()
+            navigationController.pushViewController(viewController, animated: true)
+        }
+    }
 }
 
 extension OrganizationVC: UIPickerViewDataSource {
@@ -151,5 +198,9 @@ extension OrganizationVC: UIPickerViewDataSource {
 extension OrganizationVC: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return companies[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.myLabel.text = companies[row]
     }
 }

@@ -15,5 +15,6 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .orange
+        navigationItem.title = "Detail"
     }
 }
