@@ -9,7 +9,12 @@ import UIKit
 
 class OrganizationVC: UIViewController {
     
+    // MARK: - Properties
+    
     private let companies = ["Apple", "Google", "Amazon", "Tesla", "Netflix", "Ozon", "Microsoft", "Meta", "Coca-Cola", "BMW"]
+    private let commands = ["Ferrari", "McLaren", "Alpine", "Mercedes"]
+    
+    // MARK: - UI
     
     lazy var myLabel: UILabel = {
         let label = UILabel(frame: .zero)
@@ -71,8 +76,24 @@ class OrganizationVC: UIViewController {
     lazy var mySlider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.minimumTrackTintColor = .systemGreen
+        slider.maximumTrackTintColor = .systemPink
+        slider.thumbTintColor = .systemOrange
+        slider.minimumValue = 0
+        slider.maximumValue = 1000
+        slider.addTarget(self, action: #selector(changeValueSlider), for: .valueChanged)
         return slider
     }()
+    
+    lazy var mySegment: UISegmentedControl = {
+        let segment = UISegmentedControl(items: commands)
+        segment.translatesAutoresizingMaskIntoConstraints = false
+        segment.selectedSegmentTintColor = .systemRed
+        segment.addTarget(self, action: #selector(segmentValue), for: .valueChanged)
+        return segment
+    }()
+    
+    // MARK: - Lifecicle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +109,7 @@ class OrganizationVC: UIViewController {
         view.addSubview(myPicker)
         view.addSubview(myButtonNav)
         view.addSubview(mySlider)
+        view.addSubview(mySegment)
         
         setButtonConstreints()
         setLabelConstraints()
@@ -95,8 +117,10 @@ class OrganizationVC: UIViewController {
         setPickerConstraints()
         setButtonNavConstreints()
         setSliderConstraints()
-
+        setSegmentConstraints()
     }
+    
+    // MARK: - Constreints
     
     private func setButtonConstreints() {
         let safeArea = view.safeAreaLayoutGuide
@@ -150,6 +174,17 @@ class OrganizationVC: UIViewController {
         mySlider.topAnchor.constraint(equalTo: myButtonNav.bottomAnchor, constant: 16).isActive = true
     }
     
+    private func setSegmentConstraints() {
+        let safeArea = view.safeAreaLayoutGuide
+        
+        mySegment.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 8).isActive = true
+        mySegment.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -8).isActive = true
+        mySegment.topAnchor.constraint(equalTo: mySlider.bottomAnchor, constant: 16).isActive = true
+        mySegment.heightAnchor.constraint(equalToConstant: 36).isActive = true
+    }
+    
+    // MARK: - Methods
+    
     @objc private func printButton() {
         let alertControl = UIAlertController(title: "Write", message: "Alert presentation\nnew string example", preferredStyle: .alert)
         
@@ -183,7 +218,21 @@ class OrganizationVC: UIViewController {
             navigationController.pushViewController(viewController, animated: true)
         }
     }
+    
+    @objc private func changeValueSlider() {
+        print(Int(mySlider.value))
+    }
+    
+    @objc private func segmentValue(target: UISegmentedControl) {
+        if target == mySegment {
+            let segmentIndex = target.selectedSegmentIndex
+            
+            myLabel.text = commands[segmentIndex]
+        }
+    }
 }
+
+    // MARK: - PickerExtension
 
 extension OrganizationVC: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
